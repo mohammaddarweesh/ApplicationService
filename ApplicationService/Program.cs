@@ -12,8 +12,8 @@ builder.Services.AddHttpClient<IStorageServiceClient, StorageServiceClient>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
+// configure the application to run over http
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

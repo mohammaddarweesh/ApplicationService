@@ -1,0 +1,18 @@
+services:
+  applicationservice:
+    image: ${DOCKER_REGISTRY-}applicationservice
+    build:
+      context: .
+      dockerfile: ApplicationService/Dockerfile
+    networks:
+      - app-network
+  storageservice:
+    image: ${DOCKER_REGISTRY-}storageservice
+    build:
+      context: .
+      dockerfile: StorageService/Dockerfile
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

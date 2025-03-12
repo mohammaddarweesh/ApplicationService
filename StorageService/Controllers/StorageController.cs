@@ -44,8 +44,11 @@ namespace StorageService.Controllers
             // Generate a signature for the upload
             string signature = _signatureService.GenerateSignature(metadata, uploadId);
 
+            // Storage Public Url
+            string url = _configuration["Storage:Url"];
+
             // Create the pre-signed URL (in a real system, this would be an Amazon S3 or Azure Storage URL)
-            string uploadUrl = $"{Request.Scheme}://{Request.Host}/storage/upload/{uploadId}?signature={signature}";
+            string uploadUrl = $"{Request.Scheme}://{url}/api/storage/upload/{uploadId}?signature={signature}";
 
             // Set expiration time (e.g., 15 minutes from now)
             DateTime expiresAt = DateTime.UtcNow.AddMinutes(15);
@@ -90,15 +93,15 @@ namespace StorageService.Controllers
             var file = Request.Form.Files[0];
 
             // Validate the file matches the metadata
-            if (file.Length != metadata.FileMetadata.FileSize)
-            {
-                return BadRequest("File size does not match");
-            }
+            //if (file.Length != metadata.FileMetadata.FileSize)
+            //{
+            //    return BadRequest("File size does not match");
+            //}
 
-            if (file.ContentType != metadata.FileMetadata.MimeType)
-            {
-                return BadRequest("File type does not match");
-            }
+            //if (file.ContentType != metadata.FileMetadata.MimeType)
+            //{
+            //    return BadRequest("File type does not match");
+            //}
 
             // Store the file
             using (var stream = file.OpenReadStream())

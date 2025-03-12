@@ -11,8 +11,8 @@ builder.Services.AddSingleton<ISignatureService, SignatureService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
+// configure the application to run over http
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "32aecc75-f4d0-4111-9779-b7416c2c531f",
+		"name": "Storage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13501804",
+		"_collection_link": "https://red-equinox-250353.postman.co/workspace/Team-Workspace~d868d688-761c-4c88-88f6-19e635c73168/collection/13501804-32aecc75-f4d0-4111-9779-b7416c2c531f?action=share&source=collection_link&creator=13501804"
+	},
+	"item": [
+		{
+			"name": "Get Signed URL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fileName\": \"red-shirt.jpg\",\r\n  \"fileSize\": 2345678,\r\n  \"mimeType\": \"image/jpeg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/upload/getSignedUrl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"upload",
+						"getSignedUrl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/User/Downloads/Codeca Posts (1).png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/storage/upload/8c864999-bf34-4a19-a8af-d1b5c9de82e9?signature=iV1Kl7xKh1rkG2oWsMXB88NVlVWKDfPFFAiSRH22cHI",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"storage",
+						"upload",
+						"8c864999-bf34-4a19-a8af-d1b5c9de82e9"
+					],
+					"query": [
+						{
+							"key": "signature",
+							"value": "iV1Kl7xKh1rkG2oWsMXB88NVlVWKDfPFFAiSRH22cHI"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Red Cotton T-Shirt\",\r\n  \"description\": \"Comfortable 100% cotton t-shirt in vibrant red\",\r\n  \"price\": 24.99,\r\n  \"imageId\": \"8c864999-bf34-4a19-a8af-d1b5c9de82e9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/Product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"Product"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
